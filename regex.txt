@@ -1,0 +1,1 @@
+^\s+var\s(texx|koordinat|titlee|lng|lat|link|nama)\s=.*
