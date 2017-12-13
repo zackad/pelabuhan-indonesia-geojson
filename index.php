@@ -40,7 +40,8 @@ for ($i=0; $i < count($sanitized); $i++) {
     $key = explode(' = ', $sanitized[$i]);
     switch ($key[0]) {
         case 'nama':
-            $pelabuhanItem['name'] = $key[1];
+            $namaPelabuhan = preg_replace('/\n|\'/', '', $key[1]);
+            $pelabuhanItem['name'] = $namaPelabuhan;
             array_push($pelabuhanData, $pelabuhanItem);
             break;
 
