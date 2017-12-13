@@ -10,3 +10,5 @@ $client = new Client([
 
 echo "retrieving data from server ...";
 $response = $client->request('GET', '/index.php/Dashboard');
+
+file_put_contents('tmp/php-results.html', $response->getBody());
