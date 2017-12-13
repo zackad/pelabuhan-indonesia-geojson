@@ -15,3 +15,7 @@ request(targetUrl, function (error, response, body) {
 		fs.writeFileSync('tmp/result.html', body);
 	}
 });
+
+// var stream = fs.createReadStream('tmp/result.html');
+// var filteredResults = stream.pipe(filter);
+// fs.writeFileSync('tmp/filtered.js');
