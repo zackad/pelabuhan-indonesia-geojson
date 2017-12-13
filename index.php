@@ -49,32 +49,34 @@ $pelabuhanItem = [
     ],
 ];
 for ($i=0; $i < count($sanitized); $i++) {
-    $key = explode(' = ', $sanitized[$i]);
-    switch ($key[0]) {
+    $text = explode(' = ', $sanitized[$i]);
+    $key = $text[0];
+    $value = normalizeString($text[1]);
+    switch ($key) {
         case 'nama':
-            $namaPelabuhan = preg_replace('/\n|\'/', '', $key[1]);
+            $namaPelabuhan = $value;
             $namaPelabuhan = preg_replace('/^PT\.?\s?/', 'PT. ', $namaPelabuhan);
             $namaPelabuhan = preg_replace('/\s+/', ' ', $namaPelabuhan);
             $pelabuhanItem['name'] = $namaPelabuhan;
             array_push($pelabuhanData, $pelabuhanItem);
             break;
         case 'texx':
-            $pelabuhanItem['description'] = normalizeString($key[1]);
+            $pelabuhanItem['description'] = $value;
             break;
         case 'titlee':
-            $pelabuhanItem['category'] = normalizeString($key[1]);
+            $pelabuhanItem['category'] = $value;
             break;
         case 'lng':
-            $pelabuhanItem['coordinate']['longitude'] = normalizeString($key[1]);
+            $pelabuhanItem['coordinate']['longitude'] = $value;
             break;
         case 'lat':
-            $pelabuhanItem['coordinate']['latitude'] = normalizeString($key[1]);
+            $pelabuhanItem['coordinate']['latitude'] = $value;
             break;
         case 'koordinat':
-            $pelabuhanItem['coordinate']['formatted'] = normalizeString($key[1]);
+            $pelabuhanItem['coordinate']['formatted'] = $value;
             break;
         case 'link':
-            $pelabuhanItem['detail']['url'] = normalizeString($key[1]);
+            $pelabuhanItem['detail']['url'] = $value;
             break;
         default:
             # code...
