@@ -37,11 +37,16 @@ $pelabuhanData = [];
 $counter = 0;
 $pelabuhanItem = [];
 for ($i=0; $i < count($sanitized); $i++) {
-    if (preg_match('/^var\stexx/', $sanitized[$i])) {
-        $counter++;
-    }
-    if (preg_match('/^var\snama/', $sanitized[$i])) {
-        array_push($pelabuhanData, $pelabuhanItem);
+    $key = explode(' = ', $sanitized[$i]);
+    switch ($key[0]) {
+        case 'nama':
+            $pelabuhanItem['name'] = $key[1];
+            array_push($pelabuhanData, $pelabuhanItem);
+            break;
+
+        default:
+            # code...
+            break;
     }
 }
 echo $counter . PHP_EOL;
