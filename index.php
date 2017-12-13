@@ -19,7 +19,7 @@ $filtered = array_values(array_filter($filtered));
 
 echo count($filtered) . PHP_EOL;
 
-$sanitized = preg_replace('/^\s+/', '', $filtered);
+$sanitized = preg_replace('/^\s+var\s+|;$/', '', $filtered);
 // print_r($sanitized);
 
 // Expected data format
