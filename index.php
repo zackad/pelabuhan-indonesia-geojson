@@ -41,6 +41,7 @@ for ($i=0; $i < count($sanitized); $i++) {
     switch ($key[0]) {
         case 'nama':
             $namaPelabuhan = preg_replace('/\n|\'/', '', $key[1]);
+            $namaPelabuhan = preg_replace('/\s+/', ' ', $namaPelabuhan);
             $pelabuhanItem['name'] = $namaPelabuhan;
             array_push($pelabuhanData, $pelabuhanItem);
             break;
