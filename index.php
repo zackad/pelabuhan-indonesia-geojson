@@ -35,7 +35,18 @@ $sanitized = preg_replace('/^\s+var\s+|;$/', '', $filtered);
 $pelabuhanData = [];
 
 $counter = 0;
-$pelabuhanItem = [];
+$pelabuhanItem = [
+    'name' => '',
+    'description' => '',
+    'category' => '',
+    'coordinate' => [
+        'longitude' => '',
+        'latitude' => '',
+    ],
+    'detail' => [
+        'url' => '',
+    ],
+];
 for ($i=0; $i < count($sanitized); $i++) {
     $key = explode(' = ', $sanitized[$i]);
     switch ($key[0]) {
