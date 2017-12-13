@@ -89,9 +89,11 @@ for ($i=0; $i < count($sanitized); $i++) {
             break;
         case 'texx':
             $pelabuhanItem['description'] = $value;
+            $feature['properties']['description'] = $value;
             break;
         case 'titlee':
             $pelabuhanItem['category'] = $value;
+            $feature['properties']['category'] = $value;
             break;
         case 'lng':
             $pelabuhanItem['coordinate']['longitude'] = $value;
@@ -106,6 +108,7 @@ for ($i=0; $i < count($sanitized); $i++) {
             break;
         case 'link':
             $pelabuhanItem['detail']['url'] = $value;
+            $feature['properties']['detail']['url'] = $value;
             break;
         default:
             # code...
