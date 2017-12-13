@@ -64,8 +64,17 @@ for ($i=0; $i < count($sanitized); $i++) {
         case 'titlee':
             $pelabuhanItem['category'] = normalizeString($key[1]);
             break;
+        case 'lng':
+            $pelabuhanItem['coordinate']['longitude'] = normalizeString($key[1]);
+            break;
+        case 'lat':
+            $pelabuhanItem['coordinate']['latitude'] = normalizeString($key[1]);
+            break;
         case 'koordinat':
             $pelabuhanItem['coordinate']['formatted'] = normalizeString($key[1]);
+            break;
+        case 'link':
+            $pelabuhanItem['detail']['url'] = normalizeString($key[1]);
             break;
         default:
             # code...
