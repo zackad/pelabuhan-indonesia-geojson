@@ -20,7 +20,33 @@ $filtered = array_values(array_filter($filtered));
 echo count($filtered) . PHP_EOL;
 
 $sanitized = preg_replace('/^\s+/', '', $filtered);
-print_r($sanitized);
+// print_r($sanitized);
+
+// Expected data format
+// - name
+// - description
+// - function
+// - coordinate:
+//   - longitude
+//   - latitude
+//   - formatted (optional)
+// - detail:
+//   - url (url to detail resource)
+$pelabuhanData = [];
+
+$counter = 0;
+$pelabuhanItem = [];
+for ($i=0; $i < count($sanitized); $i++) {
+    if (preg_match('/^var\stexx/', $sanitized[$i])) {
+        $counter++;
+    }
+    if (preg_match('/^var\snama/', $sanitized[$i])) {
+        array_push($pelabuhanData, $pelabuhanItem);
+    }
+}
+echo $counter . PHP_EOL;
+
+file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData));
 
 echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
