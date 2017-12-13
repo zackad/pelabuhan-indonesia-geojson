@@ -58,6 +58,9 @@ for ($i=0; $i < count($sanitized); $i++) {
             $pelabuhanItem['name'] = $namaPelabuhan;
             array_push($pelabuhanData, $pelabuhanItem);
             break;
+        case 'texx':
+            $pelabuhanItem['description'] = normalizeString($key[1]);
+            break;
         case 'titlee':
             $pelabuhanItem['category'] = normalizeString($key[1]);
             break;
