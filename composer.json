@@ -1,0 +1,15 @@
+{
+    "name": "zackad/data-pelabuhan-indonesia",
+    "description": "Indonesian harbor data as geojson.",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "zackad",
+            "email": "zackad.dev@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^6.3"
+    }
+}
