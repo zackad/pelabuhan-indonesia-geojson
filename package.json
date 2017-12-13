@@ -1,0 +1,24 @@
+{
+  "name": "data-pelabuhan-indonesia",
+  "version": "1.0.0",
+  "description": "Indonesian harbor data as geojson.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/zackad/data-pelabuhan-indonesia.git"
+  },
+  "keywords": [
+    "geojson",
+    "harbor",
+    "indonesia"
+  ],
+  "author": "zackad",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://gitlab.com/zackad/data-pelabuhan-indonesia/issues"
+  },
+  "homepage": "https://gitlab.com/zackad/data-pelabuhan-indonesia#README"
+}
