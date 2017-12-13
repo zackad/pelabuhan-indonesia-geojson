@@ -42,6 +42,7 @@ $pelabuhanItem = [
     'coordinate' => [
         'longitude' => '',
         'latitude' => '',
+        'formatted' => '',
     ],
     'detail' => [
         'url' => '',
@@ -60,6 +61,9 @@ for ($i=0; $i < count($sanitized); $i++) {
         case 'titlee':
             $pelabuhanItem['category'] = normalizeString($key[1]);
             break;
+        case 'koordinat':
+            $pelabuhanItem['coordinate']['formatted'] = normalizeString($key[1]);
+            break;
         default:
             # code...
             break;
@@ -67,7 +71,7 @@ for ($i=0; $i < count($sanitized); $i++) {
 }
 echo $counter . PHP_EOL;
 
-file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData, JSON_PRETTY_PRINT));
+file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
 
 echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
