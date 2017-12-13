@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://gitlab.com/zackad/data-pelabuhan-indonesia/issues"
   },
-  "homepage": "https://gitlab.com/zackad/data-pelabuhan-indonesia#README"
+  "homepage": "https://gitlab.com/zackad/data-pelabuhan-indonesia#README",
+  "dependencies": {
+    "request": "^2.83.0"
+  }
 }
