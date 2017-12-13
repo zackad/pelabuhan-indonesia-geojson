@@ -8,18 +8,20 @@ $client = new Client([
     'base_uri' => 'http://simpel.dephub.go.id'
 ]);
 
-echo "retrieving data from server ...";
+echo "retrieving data from server ..." . PHP_EOL;
 $response = $client->request('GET', '/index.php/Dashboard');
 
 file_put_contents('tmp/php-results.html', $response->getBody());
 
-echo "filterring ...";
+echo "filterring ..." . PHP_EOL;
 $filtered = preg_grep('/^\s+var\s(texx|koordinat|titlee|lng|lat|link|nama)\s=.*/', file('tmp/php-results.html'));
 
-$sanitized = preg_replace('/^\s+/', '', $filtered);
-print_r($filtered);
+echo count($filtered) . PHP_EOL;
 
-echo "saving filter result ...";
+$sanitized = preg_replace('/^\s+/', '', $filtered);
+print_r($sanitized);
+
+echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
 
-echo "done.";
+echo "done." . PHP_EOL;
