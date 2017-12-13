@@ -25,7 +25,7 @@ $sanitized = preg_replace('/^\s+var\s+|;$/', '', $filtered);
 // Expected data format
 // - name
 // - description
-// - function
+// - category
 // - coordinate:
 //   - longitude
 //   - latitude
@@ -46,7 +46,9 @@ for ($i=0; $i < count($sanitized); $i++) {
             $pelabuhanItem['name'] = $namaPelabuhan;
             array_push($pelabuhanData, $pelabuhanItem);
             break;
-
+        case 'titlee':
+            $pelabuhanItem['category'] = $key[1];
+            break;
         default:
             # code...
             break;
