@@ -15,6 +15,7 @@ file_put_contents('tmp/php-results.html', $response->getBody());
 
 echo "filterring ..." . PHP_EOL;
 $filtered = preg_grep('/^\s+var\s(texx|koordinat|titlee|lng|lat|link|nama)\s=.*/', file('tmp/php-results.html'));
+$filtered = array_values(array_filter($filtered));
 
 echo count($filtered) . PHP_EOL;
 
