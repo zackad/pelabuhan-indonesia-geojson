@@ -1,7 +1,12 @@
 var request = require('request');
 var fs = require('fs');
+var LineFilter = require('node-line-reader').LineFilter;
 
 var targetUrl = 'http://simpel.dephub.go.id/index.php/Dashboard';
+var filter = new LineFilter({
+	skipEmpty: true,
+	include: /^\s+var\s(texx|koordinat|titlee|lng|lat|link|nama)\s=.*/
+});
 
 request(targetUrl, function (error, response, body) {
 	console.log('error: ', error);
