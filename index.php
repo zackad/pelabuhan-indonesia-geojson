@@ -81,7 +81,11 @@ for ($i=0; $i < count($sanitized); $i++) {
             $namaPelabuhan = preg_replace('/^PT\.?\s?/', 'PT. ', $namaPelabuhan);
             $namaPelabuhan = preg_replace('/\s+/', ' ', $namaPelabuhan);
             $pelabuhanItem['name'] = $namaPelabuhan;
+
+            $feature['properties']['name'] = $namaPelabuhan;
+
             array_push($pelabuhanData, $pelabuhanItem);
+            array_push($featureCollection, $feature);
             break;
         case 'texx':
             $pelabuhanItem['description'] = $value;
@@ -91,9 +95,11 @@ for ($i=0; $i < count($sanitized); $i++) {
             break;
         case 'lng':
             $pelabuhanItem['coordinate']['longitude'] = $value;
+            $feature['geometry']['coordinates'][0] = $value;
             break;
         case 'lat':
             $pelabuhanItem['coordinate']['latitude'] = $value;
+            $feature['geometry']['coordinates'][1] = $value;
             break;
         case 'koordinat':
             $pelabuhanItem['coordinate']['formatted'] = $value;
@@ -109,6 +115,9 @@ for ($i=0; $i < count($sanitized); $i++) {
 echo $counter . PHP_EOL;
 
 file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK));
+
+$geojson['features'] = $featureCollection;
+file_put_contents('tmp/pelabuhan-indonesia.geojson', json_encode($geojson, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE | JSON_NUMERIC_CHECK));
 
 echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
