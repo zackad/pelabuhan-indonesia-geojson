@@ -47,7 +47,7 @@ for ($i=0; $i < count($sanitized); $i++) {
             array_push($pelabuhanData, $pelabuhanItem);
             break;
         case 'titlee':
-            $pelabuhanItem['category'] = $key[1];
+            $pelabuhanItem['category'] = normalizeString($key[1]);
             break;
         default:
             # code...
@@ -62,3 +62,13 @@ echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
 
 echo "done." . PHP_EOL;
+
+/**
+ * Remove unnecessary character from string
+ */
+function normalizeString(string $text)
+{
+    $text = preg_replace('/\n|\'/', '', $text);
+    $text = preg_replace('/\s+/', ' ', $text);
+    return $text;
+}
