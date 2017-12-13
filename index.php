@@ -51,7 +51,7 @@ for ($i=0; $i < count($sanitized); $i++) {
 }
 echo $counter . PHP_EOL;
 
-file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData));
+file_put_contents('tmp/pelabuhan-indonesia.json', json_encode($pelabuhanData, JSON_PRETTY_PRINT));
 
 echo "saving filter result ..." . PHP_EOL;
 file_put_contents('tmp/php-filtered.js', $sanitized);
