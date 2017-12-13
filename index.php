@@ -34,6 +34,29 @@ $sanitized = preg_replace('/^\s+var\s+|;$/', '', $filtered);
 //   - url (url to detail resource)
 $pelabuhanData = [];
 
+$geojson = [
+    'type' => 'FeatureCollection',
+    'features' => [],
+];
+
+$featureCollection = [];
+
+$feature = [
+    'type' => 'Feature',
+    'geometry' => [
+        'type' => 'Point',
+        'coordinates' => [],
+    ],
+    'properties' => [
+        'name' => '',
+        'description' => '',
+        'category' => '',
+        'detail' => [
+            'url' => '',
+        ],
+    ]
+];
+
 $counter = 0;
 $pelabuhanItem = [
     'name' => '',
