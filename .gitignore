@@ -1,1 +1,8 @@
+# composer vendor
 /vendor/
+
+# npm module
+node_modules
+
+# temporary directory
+tmp
