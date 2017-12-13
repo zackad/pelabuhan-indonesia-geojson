@@ -6,5 +6,7 @@ var targetUrl = 'http://simpel.dephub.go.id/index.php/Dashboard';
 request(targetUrl, function (error, response, body) {
 	console.log('error: ', error);
 	console.log('status code: ', response && response.statusCode);
-	fs.writeFileSync('tmp/result.html',body);
+	if (!error && response.statusCode === 200) {
+		fs.writeFileSync('tmp/result.html', body);
+	}
 });
