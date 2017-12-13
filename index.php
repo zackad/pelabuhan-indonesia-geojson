@@ -68,7 +68,7 @@ echo "done." . PHP_EOL;
  */
 function normalizeString(string $text)
 {
-    $text = preg_replace('/\n|\'/', '', $text);
+    $text = preg_replace('/\n|^\'|\'$/', '', $text);
     $text = preg_replace('/\s+/', ' ', $text);
     return $text;
 }
