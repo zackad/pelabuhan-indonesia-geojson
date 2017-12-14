@@ -12,13 +12,13 @@ Indonesian harbor location data in GeoJSON format. Scrapped from [simpel.dephub.
 Clone this repository
 
 ```shell
-git clone https://github.com/zackad/pelabuhan-indonesia-geojeon
+git clone https://github.com/zackad/pelabuhan-indonesia-geojson
 ```
 
 Change to clonned directory and run php script from command line. You may need to create temporary directory to store generated data.
 
 ```shell
-cd pelabuhan-indonesia-geojeon
+cd pelabuhan-indonesia-geojson
 mkdir -p tmp
 php index.php
 ```
