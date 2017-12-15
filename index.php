@@ -158,7 +158,7 @@ function normalizeLongitude($longitude)
     }
 
     if ($longitude < -180) {
-        $longitude = 108 + ($longitude % 180);
+        $longitude = 180 + ($longitude % 180);
     }
     return $longitude;
 }
