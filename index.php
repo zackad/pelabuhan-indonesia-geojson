@@ -101,6 +101,7 @@ for ($i=0; $i < count($sanitized); $i++) {
             $feature['properties']['category'] = $value;
             break;
         case 'lng':
+            $value = normalizeLongitude($value);
             $pelabuhanItem['coordinate']['longitude'] = $value;
             $feature['geometry']['coordinates'][0] = $value;
             break;
@@ -140,4 +141,24 @@ function normalizeString(string $text)
     $text = preg_replace('/\n|^\'|\'$|^\"|\"$/', '', $text);
     $text = preg_replace('/\s+/', ' ', $text);
     return $text;
+}
+
+/**
+ * Normalize longitude coordinate value
+ * -180 < longitude < 180
+ */
+function normalizeLongitude($longitude)
+{
+    if ($longitude > 360) {
+        $longitude = $longitude % 360;
+    }
+
+    if ($longitude > 180) {
+        $longitude = 0 - ($longitude % 180);
+    }
+
+    if ($longitude < -180) {
+        $longitude = 108 + ($longitude % 180);
+    }
+    return $longitude;
 }
