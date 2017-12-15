@@ -11,6 +11,11 @@ $client = new Client([
 echo "retrieving data from server ..." . PHP_EOL;
 $response = $client->request('GET', '/index.php/Dashboard');
 
+// create temporary directory if not exists
+if (!is_dir('tmp')) {
+    mkdir('tmp', 0755, true);
+}
+
 file_put_contents('tmp/php-results.html', $response->getBody());
 
 echo "filterring ..." . PHP_EOL;
