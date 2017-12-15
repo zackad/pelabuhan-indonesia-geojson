@@ -150,15 +150,15 @@ function normalizeString(string $text)
 function normalizeLongitude($longitude)
 {
     if ($longitude > 360) {
-        $longitude = $longitude % 360;
+        $longitude = fmod($longitude, 360);
     }
 
     if ($longitude > 180) {
-        $longitude = 0 - ($longitude % 180);
+        $longitude = 0 - fmod($longitude, 180);
     }
 
     if ($longitude < -180) {
-        $longitude = 180 + ($longitude % 180);
+        $longitude = 180 + fmod($longitude, 180);
     }
     return $longitude;
 }
