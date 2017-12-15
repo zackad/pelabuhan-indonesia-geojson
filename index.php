@@ -11,6 +11,11 @@ $client = new Client([
 echo "retrieving data from server ..." . PHP_EOL;
 $response = $client->request('GET', '/index.php/Dashboard');
 
+// create temporary directory if not exists
+if (!is_dir('tmp')) {
+    mkdir('tmp', 0755, true);
+}
+
 file_put_contents('tmp/php-results.html', $response->getBody());
 
 echo "filterring ..." . PHP_EOL;
@@ -96,6 +101,7 @@ for ($i=0; $i < count($sanitized); $i++) {
             $feature['properties']['category'] = $value;
             break;
         case 'lng':
+            $value = normalizeLongitude($value);
             $pelabuhanItem['coordinate']['longitude'] = $value;
             $feature['geometry']['coordinates'][0] = $value;
             break;
@@ -135,4 +141,24 @@ function normalizeString(string $text)
     $text = preg_replace('/\n|^\'|\'$|^\"|\"$/', '', $text);
     $text = preg_replace('/\s+/', ' ', $text);
     return $text;
+}
+
+/**
+ * Normalize longitude coordinate value
+ * -180 < longitude < 180
+ */
+function normalizeLongitude($longitude)
+{
+    if ($longitude > 360) {
+        $longitude = fmod($longitude, 360);
+    }
+
+    if ($longitude > 180) {
+        $longitude = 0 - fmod($longitude, 180);
+    }
+
+    if ($longitude < -180) {
+        $longitude = 180 + fmod($longitude, 180);
+    }
+    return $longitude;
 }
