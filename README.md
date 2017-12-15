@@ -6,7 +6,7 @@ Indonesian harbor location data in GeoJSON format. Scrapped from [simpel.dephub.
 
 **Requirements:**
 
-- PHP7
+- **PHP** version 7.0 or above
 - [Guzzle](https://packagist.org/packages/guzzlehttp/guzzle)
 
 Clone this repository
@@ -32,6 +32,8 @@ file_put_contents('tmp/pelabuhan-indonesia.geojson', json_encode($geojson, JSON_
 
 ...
 ```
+
+> **Note :** please make sure that directory you want to save file into it is already exist and writeable.
 
 ## Lisence
 
