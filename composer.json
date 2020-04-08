@@ -17,6 +17,11 @@
         "symfony/dotenv": "4.4.*",
         "symfony/framework-bundle": "4.4.*"
     },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
     "extra": {
         "symfony": {
             "allow-contrib": false,
